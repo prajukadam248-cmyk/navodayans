@@ -1,0 +1,24 @@
+{
+  "overview": "Navodayans is an AI-powered study companion for 8th-grade students, covering all NCERT subjects with interactive chapter browsing, AI tutor, practice quizzes, bookmarks, and progress tracking. All content is AI-generated — no copyrighted material.",
+  "features": [
+    "Subject hub with Math, Science, Social Science, English, and Hindi chapters",
+    "AI tutor chat for instant, age-appropriate explanations",
+    "Practice quiz mode with AI-generated questions and instant feedback",
+    "Bookmarks to save favourite chapters",
+    "Progress dashboard with quiz scores and completion tracking",
+    "Per-user OpenAI API key management",
+    "Colorful, playful mobile-responsive UI for 13-14 year olds"
+  ],
+  "category": "education",
+  "tags": [
+    "education",
+    "8th-grade",
+    "ncert",
+    "ai-tutor",
+    "quiz",
+    "study-companion",
+    "india",
+    "students"
+  ],
+  "last_updated": "2026-05-12T06:28:14.740Z"
+}

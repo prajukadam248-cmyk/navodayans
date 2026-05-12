@@ -1,0 +1,76 @@
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type Timestamp = int;
+type SubjectId = text;
+type Subject = 
+ record {
+   emoji: text;
+   id: SubjectId;
+   name: text;
+ };
+type QuizScore = 
+ record {
+   chapterId: ChapterId;
+   score: nat;
+   subject: SubjectId;
+   takenAt: Timestamp;
+   totalQuestions: nat;
+ };
+type ProgressSummary = 
+ record {
+   avgScore: nat;
+   totalBookmarks: nat;
+   totalCompleted: nat;
+   totalQuizzesTaken: nat;
+ };
+type MessageRole = 
+ variant {
+   assistant;
+   user;
+ };
+type ChatMessage = 
+ record {
+   content: text;
+   role: MessageRole;
+   timestamp: Timestamp;
+ };
+type ChapterId = text;
+type Chapter = 
+ record {
+   id: ChapterId;
+   number: nat;
+   subjectId: SubjectId;
+   title: text;
+ };
+type Bookmark = 
+ record {
+   addedAt: Timestamp;
+   chapterId: ChapterId;
+   subjectId: SubjectId;
+ };
+service : {
+  _initializeAccessControl: () -> ();
+  addBookmark: (chapterId: ChapterId, subjectId: SubjectId) -> ();
+  askAssistant: (prompt: text) -> (text);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  clearChatHistory: () -> ();
+  clearMyOpenAIApiKey: () -> ();
+  getBookmarks: () -> (vec Bookmark) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getChapters: (subjectId: SubjectId) -> (vec Chapter) query;
+  getChatHistory: () -> (vec ChatMessage) query;
+  getProgressSummary: () -> (ProgressSummary) query;
+  getRecentQuizScores: (limit: nat) -> (vec QuizScore) query;
+  getSubjects: () -> (vec Subject) query;
+  isCallerAdmin: () -> (bool) query;
+  isMyOpenAIConfigured: () -> (bool) query;
+  markChapterComplete: (chapterId: ChapterId, subjectId: SubjectId) -> ();
+  removeBookmark: (chapterId: ChapterId) -> ();
+  saveQuizScore: (subject: SubjectId, chapterId: ChapterId, score: nat,
+   totalQuestions: nat) -> ();
+  setMyOpenAIApiKey: (key: text) -> ();
+}

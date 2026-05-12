@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Nunito";
+    --font-body: "Nunito";
+    --font-mono: "Geist Mono";
+    --radius: 0.625rem;
+
+    --background: 0.98 0.008 75;
+    --foreground: 0.18 0.02 280;
+    --card: 1.0 0.005 75;
+    --card-foreground: 0.18 0.02 280;
+    --popover: 1.0 0.005 75;
+    --popover-foreground: 0.18 0.02 280;
+
+    --primary: 0.65 0.22 35;
+    --primary-foreground: 0.98 0.005 35;
+
+    --secondary: 0.94 0.02 280;
+    --secondary-foreground: 0.28 0.02 280;
+    --muted: 0.94 0.02 280;
+    --muted-foreground: 0.5 0.015 280;
+
+    --accent: 0.65 0.18 190;
+    --accent-foreground: 0.18 0.02 190;
+
+    --destructive: 0.6 0.2 25;
+    --destructive-foreground: 0.98 0.005 25;
+
+    --border: 0.9 0.012 75;
+    --input: 0.9 0.012 75;
+    --ring: 0.65 0.22 35;
+
+    --chart-1: 0.65 0.22 35;
+    --chart-2: 0.62 0.18 125;
+    --chart-3: 0.68 0.2 270;
+    --chart-4: 0.65 0.2 290;
+    --chart-5: 0.62 0.18 10;
+
+    --sidebar: 0.98 0.005 75;
+    --sidebar-foreground: 0.18 0.02 280;
+    --sidebar-primary: 0.65 0.22 35;
+    --sidebar-primary-foreground: 0.98 0.005 35;
+    --sidebar-accent: 0.94 0.02 280;
+    --sidebar-accent-foreground: 0.28 0.02 280;
+    --sidebar-border: 0.9 0.012 75;
+    --sidebar-ring: 0.65 0.22 35;
+  }
+
+  .dark {
+    --background: 0.14 0.015 280;
+    --foreground: 0.94 0.01 280;
+    --card: 0.18 0.018 280;
+    --card-foreground: 0.94 0.01 280;
+    --popover: 0.22 0.02 280;
+    --popover-foreground: 0.94 0.01 280;
+
+    --primary: 0.68 0.22 35;
+    --primary-foreground: 0.14 0.015 280;
+
+    --secondary: 0.22 0.02 280;
+    --secondary-foreground: 0.85 0.01 280;
+    --muted: 0.22 0.02 280;
+    --muted-foreground: 0.55 0.015 280;
+
+    --accent: 0.7 0.18 190;
+    --accent-foreground: 0.14 0.015 190;
+
+    --destructive: 0.65 0.2 25;
+    --destructive-foreground: 0.94 0.01 25;
+
+    --border: 0.3 0.02 280;
+    --input: 0.3 0.02 280;
+    --ring: 0.68 0.22 35;
+
+    --chart-1: 0.68 0.22 35;
+    --chart-2: 0.65 0.18 125;
+    --chart-3: 0.72 0.2 270;
+    --chart-4: 0.68 0.2 290;
+    --chart-5: 0.65 0.18 10;
+
+    --sidebar: 0.18 0.018 280;
+    --sidebar-foreground: 0.94 0.01 280;
+    --sidebar-primary: 0.68 0.22 35;
+    --sidebar-primary-foreground: 0.14 0.015 280;
+    --sidebar-accent: 0.22 0.02 280;
+    --sidebar-accent-foreground: 0.85 0.01 280;
+    --sidebar-border: 0.3 0.02 280;
+    --sidebar-ring: 0.68 0.22 35;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/assets/fonts/Nunito.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Subject brand colors */
+  .subject-math {
+    @apply bg-[oklch(0.65_0.22_35)] text-white;
+  }
+  .subject-science {
+    @apply bg-[oklch(0.62_0.18_125)] text-white;
+  }
+  .subject-social {
+    @apply bg-[oklch(0.68_0.2_270)] text-white;
+  }
+  .subject-english {
+    @apply bg-[oklch(0.65_0.2_230)] text-white;
+  }
+  .subject-hindi {
+    @apply bg-[oklch(0.62_0.18_10)] text-white;
+  }
+  .subject-success {
+    @apply bg-[oklch(0.62_0.18_145)] text-white;
+  }
+
+  /* Playful utility classes */
+  .card-hover {
+    @apply transition-smooth hover:shadow-lg hover:scale-105 cursor-pointer;
+  }
+
+  .btn-playful {
+    @apply rounded-full font-semibold transition-smooth hover:shadow-md active:scale-95;
+  }
+
+  .bg-gradient-play {
+    @apply bg-gradient-to-br from-[oklch(0.65_0.22_35)] to-[oklch(0.68_0.2_270)];
+  }
+}
+
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}

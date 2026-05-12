@@ -1,0 +1,89 @@
+// Version: 1.0.0
+type Bookmark__1696008 =
+  {
+    addedAt : Timestamp__301639476;
+    chapterId : ChapterId__202794786;
+    subjectId : SubjectId__402408784
+  };
+type ChapterId__202794786 = Text;
+type ChatMessage__559859432 =
+  {
+    content : Text;
+    role : MessageRole__512297421;
+    timestamp : Timestamp__301639476
+  };
+type CompletionStatus__707178035 =
+  {
+    chapterId : ChapterId__202794786;
+    completedAt : Timestamp__301639476;
+    subjectId : SubjectId__402408784
+  };
+type Data__80296667<K, V> =
+  {var count : Nat__1040412405; kvs : [var ?(K, V)]};
+type Internal__41346355<K, V> =
+  {children : [var ?Node__1000929467<K, V>]; data : Data__80296667<K, V>};
+type Leaf__712614010<K, V> = {data : Data__80296667<K, V>};
+type List__529703492<T> =
+  {
+    var blockIndex : Nat__1040412405;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__1040412405
+  };
+type List__560604548<T> = List__529703492<T>;
+type Map__222667396<K, V> = Map__912772452<K, V>;
+type Map__709709801<K, V> =
+  {var root : Node__1000929467<K, V>; var size : Nat__1040412405};
+type Map__912772452<K, V> = Map__709709801<K, V>;
+type MessageRole__512297421 = {#assistant; #user};
+type Nat__1040412405 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__1000929467<K, V> =
+  {#internal : Internal__41346355<K, V>; #leaf : Leaf__712614010<K, V>};
+type QuizScore__699897188 =
+  {
+    chapterId : ChapterId__202794786;
+    score : Nat;
+    subject : SubjectId__402408784;
+    takenAt : Timestamp__301639476;
+    totalQuestions : Nat
+  };
+type SubjectId__402408784 = Text;
+type Timestamp__301639476 = Int;
+type UserRole__1073662873 = {#admin; #guest; #user};
+actor {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__222667396<Principal, UserRole__1073662873>
+    };
+  stable bookmarks :
+    {
+      var root :
+        Node__1000929467<Principal, List__560604548<Bookmark__1696008>>;
+      var size : Nat__1040412405
+    };
+  stable chatHistory :
+    {
+      var root :
+        Node__1000929467<Principal, List__560604548<ChatMessage__559859432>>;
+      var size : Nat__1040412405
+    };
+  stable completions :
+    {
+      var root :
+        Node__1000929467<Principal,
+                          List__560604548<CompletionStatus__707178035>>;
+      var size : Nat__1040412405
+    };
+  stable openAIKeys :
+    {
+      var root : Node__1000929467<Principal, Text>;
+      var size : Nat__1040412405
+    };
+  stable quizScores :
+    {
+      var root :
+        Node__1000929467<Principal, List__560604548<QuizScore__699897188>>;
+      var size : Nat__1040412405
+    }
+};
